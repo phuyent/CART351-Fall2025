@@ -218,5 +218,4 @@ for key in iaqi:
 
 print(dominentpol) # is pm25
 # access value of pm25 through key in iaqi
-print(iaqi["pm25"]) # is 18 {'v': 18}
-
+print(iaqi['pm25']) # is {'v': 18}
