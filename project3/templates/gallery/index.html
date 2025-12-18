@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Community Gallery - Artisan Network{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/gallery.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="gallery-container">
+    <!-- Gallery Header -->
+    <header class="gallery-header">
+        <h1>🖼️ Community Gallery</h1>
+        <p class="gallery-subtitle">Explore creations from artisans around the world</p>
+        
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All Creations</button>
+            <button class="filter-tab" data-filter="painting">🎨 Paintings</button>
+            <button class="filter-tab" data-filter="flowers">🌸 Arrangements</button>
+            <button class="filter-tab" data-filter="bracelets">✨ Bracelets</button>
+        </div>
+
+        <!-- Sort Options -->
+        <div class="sort-options">
+            <label>Sort by:</label>
+            <select id="sortSelect">
+                <option value="newest">Newest First</option>
+                <option value="likes">Most Liked</option>
+                <option value="trending">Trending</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading gallery...</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div id="galleryGrid" class="gallery-grid">
+        <!-- Items will be loaded dynamically -->
+    </div>
+
+    <!-- No Items Message -->
+    <div id="noItems" class="no-items" style="display: none;">
+        <p>No creations found</p>
+        <a href="{{ url_for('product_painting_workshop') }}" class="btn btn-primary">
+            Create the First One!
+        </a>
+    </div>
+
+    <!-- Load More -->
+    <div class="load-more-container">
+        <button id="loadMoreBtn" class="btn btn-secondary" style="display: none;">
+            Load More
+        </button>
+    </div>
+</div>
+
+<!-- Modal for Viewing Full Creation -->
+<div id="creationModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div id="modalBody">
+            <!-- Creation details will be loaded here -->
+        </div>
+    </div>
+</div>
+{% endblock %}

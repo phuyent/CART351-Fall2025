@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Artisan Network{% endblock %}
+
+{% block extra_css %}
+<style>
+.welcome-container {
+    max-width: 600px;
+    margin: 8rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.welcome-card {
+    background: var(--cardBg);
+    border: 2px solid var(--cardBorder);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    box-shadow: var(--shadowLarge);
+}
+
+.welcome-icon {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.welcome-card h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.welcome-card p {
+    font-size: 1.2rem;
+    color: var(--textDim);
+    margin-bottom: 3rem;
+}
+
+.name-input-group {
+    margin: 2rem 0;
+}
+
+.name-input-group input {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    border: 2px solid var(--cardBorder);
+    border-radius: 12px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    transition: all 0.3s ease;
+    background: var(--background);
+}
+
+.name-input-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(255, 123, 89, 0.1);
+}
+
+.name-input-group input::placeholder {
+    color: var(--textDim);
+}
+
+.join-btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.quick-tip {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--accentLight);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    text-align: left;
+}
+
+.quick-tip strong {
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.quick-tip p {
+    font-size: 0.95rem;
+    margin: 0;
+    color: var(--text);
+}
+
+.guest-link {
+    margin-top: 2rem;
+    color: var(--textDim);
+    font-size: 0.9rem;
+}
+
+.guest-link a {
+    color: var(--secondary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.guest-link a:hover {
+    color: var(--secondaryHi);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="welcome-container">
+    <div class="welcome-card">
+        <div class="welcome-icon">✨</div>
+        <h1>Welcome to Artisan Network!</h1>
+        <p>Join our creative community and start crafting</p>
+
+        <form method="POST" action="{{ url_for('login') }}" id="loginForm">
+            <div class="name-input-group">
+                <input 
+                    type="text" 
+                    name="username" 
+                    id="username"
+                    placeholder="Enter your name..."
+                    required
+                    autofocus
+                    minlength="2"
+                    maxlength="30"
+                >
+            </div>
+
+            <button type="submit" class="btn btn-primary join-btn">
+                Start Creating →
+            </button>
+        </form>
+
+        <div class="quick-tip">
+            <strong>💡 Quick Tip:</strong>
+            <p>Just enter any name you like! No passwords needed. Your name will be used to identify your creations in the gallery.</p>
+        </div>
+
+        <div class="guest-link">
+            Or <a href="{{ url_for('gallery') }}">browse the gallery</a> without joining
+        </div>
+    </div>
+</div>
+
+<script>
+// Simple client-side validation
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    const username = document.getElementById('username').value.trim();
+    
+    if (username.length < 2) {
+        e.preventDefault();
+        alert('Please enter a name with at least 2 characters');
+        return false;
+    }
+    
+    // Clean up the name (remove extra spaces, etc.)
+    document.getElementById('username').value = username;
+});
+</script>
+{% endblock %}

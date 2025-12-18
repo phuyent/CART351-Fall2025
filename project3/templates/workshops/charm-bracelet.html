@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Charm Bracelet Workshop{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/workshops.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/workshops/charm-bracelet.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="workshop-container">
+    <!-- Left Sidebar -->
+    <aside class="tools-sidebar">
+        <h2>✨ Charm Library</h2>
+        
+        <!-- Band Selection -->
+        <div class="tool-section">
+            <h3>Choose Band Style</h3>
+            <div class="band-grid">
+                <button class="band-btn active" data-band="chain">
+                    <span>⛓️</span>
+                    <p>Chain</p>
+                </button>
+                <button class="band-btn" data-band="leather">
+                    <span>🎀</span>
+                    <p>Leather</p>
+                </button>
+                <button class="band-btn" data-band="beaded">
+                    <span>📿</span>
+                    <p>Beaded</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Charm Library -->
+        <div class="tool-section">
+            <h3>Charm Library</h3>
+            <div class="charm-library" id="charmLibrary">
+                <div class="charm-item" data-charm="heart">❤️</div>
+                <div class="charm-item" data-charm="star">⭐</div>
+                <div class="charm-item" data-charm="moon">🌙</div>
+                <div class="charm-item" data-charm="sun">☀️</div>
+                <div class="charm-item" data-charm="flower">🌸</div>
+                <div class="charm-item" data-charm="butterfly">🦋</div>
+                <div class="charm-item" data-charm="key">🔑</div>
+                <div class="charm-item" data-charm="lock">🔒</div>
+                <div class="charm-item" data-charm="crown">👑</div>
+                <div class="charm-item" data-charm="diamond">💎</div>
+                <div class="charm-item" data-charm="anchor">⚓</div>
+                <div class="charm-item" data-charm="peace">☮️</div>
+            </div>
+        </div>
+
+        <!-- Upload Custom -->
+        <div class="tool-section">
+            <h3>Upload Custom Charm</h3>
+            <input type="file" id="customCharmUpload" accept="image/*">
+            <button id="uploadCharmBtn" class="btn btn-secondary btn-sm">
+                📤 Upload
+            </button>
+        </div>
+
+        <!-- Controls -->
+        <div class="tool-section">
+            <h3>Bracelet Controls</h3>
+            <div class="control-group">
+                <label>Charm Spacing</label>
+                <input type="range" id="charmSpacing" min="30" max="100" value="60">
+            </div>
+            <div class="control-group">
+                <label>Band Color</label>
+                <input type="color" id="bandColor" value="#C0C0C0">
+            </div>
+            <button id="clearBraceletBtn" class="btn btn-tool btn-danger">
+                🗑️ Clear All Charms
+            </button>
+        </div>
+
+        <!-- Save -->
+        <div class="tool-section save-section">
+            <h3>💾 Save Bracelet</h3>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="braceletTitle" placeholder="Lucky Charm Bracelet" required>
+            </div>
+            <button id="saveBtn" class="btn btn-primary btn-lg">
+                Save to Gallery
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Canvas -->
+    <div class="canvas-area">
+        <div class="canvas-header">
+            <h1>Charm Bracelet Workshop</h1>
+            <p>Click charms from the library to add them to your bracelet</p>
+        </div>
+        
+        <div id="canvasContainer" class="canvas-container bracelet-canvas">
+            <svg id="braceletSVG" width="800" height="400">
+                <!-- Bracelet will be drawn here -->
+            </svg>
+        </div>
+        
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+</div>
+{% endblock %}

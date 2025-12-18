@@ -1,0 +1,373 @@
+<!-- PROJECT III: Artisan Network
+     Landing/Home Page -->
+
+
+{% extends "base.html" %}
+
+{% block title %}Artisan Network - Collaborative Craft Workshop{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">✨ Artisan Network ✨</h1>
+            <p class="hero-subtitle">Create. Share. Inspire. A Collaborative Craft Experience</p>
+            
+            <div class="hero-description">
+                <p>Join a global community of creative artisans. Design custom products, arrange beautiful flowers, 
+                   craft unique bracelets, and share your creations with artists from around the world.</p>
+                <p>Upload your own designs, be inspired by others, and watch as individual creations come together 
+                   to form a living gallery of collective creativity.</p>
+            </div>
+
+            {% if user %}
+            <div class="cta-buttons">
+                <a href="{{ url_for('product_painting_workshop') }}" class="btn btn-primary btn-lg">
+                    🎨 Start Painting Products
+                </a>
+                <a href="{{ url_for('gallery') }}" class="btn btn-secondary btn-lg">
+                    🖼️ View Community Gallery
+                </a>
+            </div>
+            {% else %}
+            <div class="cta-buttons">
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">
+                    ✨ Join the Community
+                </a>
+                <a href="{{ url_for('login') }}" class="btn btn-secondary btn-lg">
+                    🔑 Sign In
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="hero-image">
+            <div class="hero-preview">
+                <div class="preview-item painting-preview">
+                    <span>🎨</span>
+                    <p>Product Painting</p>
+                </div>
+                <div class="preview-item flowers-preview">
+                    <span>🌸</span>
+                    <p>Flower Arranging</p>
+                </div>
+                <div class="preview-item charms-preview">
+                    <span>✨</span>
+                    <p>Charm Bracelets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops Overview Section -->
+    <section class="workshops-section">
+        <h2>🛠️ Choose Your Creative Workshop</h2>
+        <p class="section-subtitle">Three unique ways to express your creativity</p>
+
+        <div class="workshops-grid">
+            <!-- Workshop 1: Product Painting -->
+            <div class="workshop-card painting-card">
+                <div class="workshop-icon">🎨</div>
+                <h3>Product Painting Workshop</h3>
+                <p class="workshop-desc">Paint your designs on digital products:</p>
+                
+                <ul class="product-list">
+                    <li>☕ Ceramic Mugs</li>
+                    <li>🍷 Glass Cups</li>
+                    <li>👜 Tote Bags</li>
+                    <li>🪞 Mirrors</li>
+                </ul>
+
+                <p class="workshop-features">
+                    <strong>Features:</strong><br>
+                    ✓ Multiple brush sizes<br>
+                    ✓ Rich color palette<br>
+                    ✓ Eraser tool<br>
+                    ✓ 3D product preview<br>
+                    ✓ Save to gallery
+                </p>
+
+                {% if user %}
+                <a href="{{ url_for('product_painting_workshop') }}" class="btn btn-workshop">
+                    Start Painting →
+                </a>
+                {% else %}
+                <a href="{{ url_for('register') }}" class="btn btn-workshop">
+                    Join to Paint →
+                </a>
+                {% endif %}
+            </div>
+
+            <!-- Workshop 2: Flower Arranging -->
+            <div class="workshop-card flowers-card">
+                <div class="workshop-icon">🌸</div>
+                <h3>Flower Arranging Workshop</h3>
+                <p class="workshop-desc">Create beautiful flower arrangements from a rich library:</p>
+                
+                <ul class="feature-list">
+                    <li>50+ pre-made flowers</li>
+                    <li>Multiple vessel types</li>
+                    <li>Upload custom flowers</li>
+                    <li>Adjust scale & rotation</li>
+                    <li>Color adjustments</li>
+                </ul>
+
+                <p class="workshop-features">
+                    <strong>Features:</strong><br>
+                    ✓ Drag-and-drop placement<br>
+                    ✓ Layer ordering<br>
+                    ✓ User-generated flowers<br>
+                    ✓ Preview snapshots<br>
+                    ✓ Community remix
+                </p>
+
+                {% if user %}
+                <a href="{{ url_for('flower_arranging_workshop') }}" class="btn btn-workshop">
+                    Arrange Flowers →
+                </a>
+                {% else %}
+                <a href="{{ url_for('register') }}" class="btn btn-workshop">
+                    Join to Create →
+                </a>
+                {% endif %}
+            </div>
+
+            <!-- Workshop 3: Charm Bracelets -->
+            <div class="workshop-card charms-card">
+                <div class="workshop-icon">✨</div>
+                <h3>Charm Bracelet Workshop</h3>
+                <p class="workshop-desc">Design unique bracelets with customizable charms:</p>
+                
+                <ul class="feature-list">
+                    <li>100+ charm designs</li>
+                    <li>Decorative beads</li>
+                    <li>Upload custom charms</li>
+                    <li>Multiple band styles</li>
+                    <li>Custom colors</li>
+                </ul>
+
+                <p class="workshop-features">
+                    <strong>Features:</strong><br>
+                    ✓ Drag-and-drop charms<br>
+                    ✓ Spacing controls<br>
+                    ✓ User-generated charms<br>
+                    ✓ Band customization<br>
+                    ✓ Design library
+                </p>
+
+                {% if user %}
+                <a href="{{ url_for('charm_bracelet_workshop') }}" class="btn btn-workshop">
+                    Create Bracelet →
+                </a>
+                {% else %}
+                <a href="{{ url_for('register') }}" class="btn btn-workshop">
+                    Join to Craft →
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <h2>✨ Why Join Artisan Network?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Creative Freedom</h3>
+                <p>Express yourself with intuitive tools. No experience needed—just imagination.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Global Community</h3>
+                <p>Connect with artists worldwide. See trends, get inspired, and celebrate creativity together.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📤</div>
+                <h3>Share Your Designs</h3>
+                <p>Upload custom flowers and charms. Let others use and remix your creations.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">❤️</div>
+                <h3>Like & Discover</h3>
+                <p>Like creations that inspire you. Discover trending designs from the community.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👤</div>
+                <h3>Creator Profiles</h3>
+                <p>Build your portfolio. Showcase your work and connect with fellow artists.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Community Stats</h3>
+                <p>See trending colors, popular designs, and community activity in real-time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview Section -->
+    <section class="gallery-preview-section">
+        <h2>🖼️ Community Gallery Highlights</h2>
+        <p class="section-subtitle">Explore recent creations from our artisans</p>
+
+        <div id="gallery-preview" class="gallery-preview-grid">
+            <div class="loading-message">Loading community creations...</div>
+        </div>
+
+        <div class="gallery-cta">
+            <a href="{{ url_for('gallery') }}" class="btn btn-primary btn-lg">
+                View Full Gallery →
+            </a>
+        </div>
+    </section>
+
+    <!-- Community Stats Section -->
+    <section class="stats-section">
+        <h2>📈 Community at a Glance</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="stat-creations">0</div>
+                <div class="stat-label">Total Creations</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-number" id="stat-users">0</div>
+                <div class="stat-label">Active Artisans</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-number" id="stat-uploads">0</div>
+                <div class="stat-label">Shared Designs</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-number" id="stat-likes">0</div>
+                <div class="stat-label">Total Likes</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2>About Artisan Network</h2>
+            
+            <p>
+                <strong>Artisan Network</strong> is more than just a craft tool—it's a celebration of collective creativity. 
+                In a world where digital experiences often isolate us, we've created a networked space where individual 
+                artistic voices combine to form something greater than the sum of their parts.
+            </p>
+
+            <p>
+                Each painting, arrangement, and bracelet shared in our community becomes part of a living, evolving artwork. 
+                When you upload a custom flower, you're not just creating for yourself—you're contributing to a shared design 
+                library that inspires and enables others. This is the power of collaborative creativity.
+            </p>
+
+            <p>
+                Whether you're an experienced artist or someone picking up a digital brush for the first time, Artisan Network 
+                welcomes you. Our tools are simple, but the possibilities are endless. Come create, share, and be inspired.
+            </p>
+
+            <div class="about-quote">
+                <em>"Alone we create art. Together, we create culture."</em>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="final-cta-section">
+        <h2>Ready to Create?</h2>
+        <p>Join thousands of artisans in our collaborative workshops</p>
+
+        {% if user %}
+        <div class="cta-buttons">
+            <a href="{{ url_for('product_painting_workshop') }}" class="btn btn-primary btn-lg">
+                🎨 Start Creating
+            </a>
+            <a href="{{ url_for('gallery') }}" class="btn btn-secondary btn-lg">
+                🖼️ Explore Gallery
+            </a>
+        </div>
+        {% else %}
+        <div class="cta-buttons">
+            <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">
+                ✨ Create Free Account
+            </a>
+            <a href="{{ url_for('gallery') }}" class="btn btn-secondary btn-lg">
+                👀 Browse Gallery
+            </a>
+        </div>
+        {% endif %}
+    </section>
+</div>
+
+<!-- JavaScript for homepage functionality -->
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+    // Load gallery preview
+    await loadGalleryPreview();
+    
+    // Load community stats
+    await loadCommunityStats();
+});
+
+async function loadGalleryPreview() {
+    try {
+        const response = await fetch('/api/users/trending?limit=6');
+        const data = await response.json();
+        
+        if (data.status === 'success' && data.creations.length > 0) {
+            const previewGrid = document.getElementById('gallery-preview');
+            previewGrid.innerHTML = data.creations.map(creation => `
+                <div class="gallery-preview-card">
+                    <div class="preview-image">
+                        <img src="${getImageData(creation)}" alt="${creation.title}">
+                    </div>
+                    <div class="preview-info">
+                        <h4>${creation.title}</h4>
+                        <p class="preview-type">${creation.workshop_type}</p>
+                        <p class="preview-likes">❤️ ${creation.likes} likes</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    } catch (error) {
+        console.error('Error loading gallery preview:', error);
+    }
+}
+
+async function loadCommunityStats() {
+    try {
+        const response = await fetch('/api/users/stats');
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            const stats = data.stats;
+            document.getElementById('stat-creations').textContent = 
+                stats.total_paintings + stats.total_arrangements + stats.total_bracelets;
+            document.getElementById('stat-users').textContent = stats.total_users;
+            document.getElementById('stat-uploads').textContent = stats.total_uploads;
+            document.getElementById('stat-likes').textContent = stats.total_likes;
+        }
+    } catch (error) {
+        console.error('Error loading stats:', error);
+    }
+}
+
+function getImageData(creation) {
+    if (creation.image_data) return creation.image_data;
+    if (creation.image_snapshot) return creation.image_snapshot;
+    return 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/%3E%3C/svg%3E';
+}
+</script>
+
+{% endblock %}

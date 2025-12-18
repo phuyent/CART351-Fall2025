@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Flower Arranging Workshop{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/workshops.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/workshops/flower-arrange.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="workshop-container">
+    <!-- Left Sidebar -->
+    <aside class="tools-sidebar">
+        <h2>🌸 Flower Library</h2>
+        
+        <!-- Vessel Selection -->
+        <div class="tool-section">
+            <h3>Choose Vessel</h3>
+            <div class="vessel-grid">
+                <button class="vessel-btn active" data-vessel="vase">
+                    <span>🏺</span>
+                    <p>Vase</p>
+                </button>
+                <button class="vessel-btn" data-vessel="jar">
+                    <span>🫙</span>
+                    <p>Jar</p>
+                </button>
+                <button class="vessel-btn" data-vessel="pot">
+                    <span>🪴</span>
+                    <p>Pot</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Flower Library -->
+        <div class="tool-section">
+            <h3>Flower Library</h3>
+            <div class="flower-library" id="flowerLibrary">
+                <div class="flower-item" data-flower="rose">🌹 </div>
+                <div class="flower-item" data-flower="tulip">🌷</div>
+                <div class="flower-item" data-flower="sunflower">🌻 </div>
+                <div class="flower-item" data-flower="daisy">🌼</div>
+                <div class="flower-item" data-flower="cherry">🌸</div>
+                <div class="flower-item" data-flower="hibiscus">🌺</div>
+                <div class="flower-item" data-flower="lotus">🪷 </div>
+                <div class="flower-item" data-flower="orchid">🎋 </div>
+            </div>
+        </div>
+
+        <!-- Upload Custom -->
+        <div class="tool-section">
+            <h3>Upload Custom Flower</h3>
+            <input type="file" id="customFlowerUpload" accept="image/*">
+            <button id="uploadFlowerBtn" class="btn btn-secondary btn-sm">
+                📤 Upload
+            </button>
+        </div>
+
+        <!-- Controls -->
+        <div class="tool-section">
+            <h3>Selected Flower Controls</h3>
+            <div class="control-group">
+                <label>Scale</label>
+                <input type="range" id="flowerScale" min="0.3" max="2" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+                <label>Rotation</label>
+                <input type="range" id="flowerRotation" min="0" max="360" value="0">
+            </div>
+            <button id="deleteFlowerBtn" class="btn btn-tool btn-danger">
+                🗑️ Delete Selected
+            </button>
+        </div>
+
+        <!-- Save -->
+        <div class="tool-section save-section">
+            <h3>💾 Save Arrangement</h3>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="arrangementTitle" placeholder="Spring Bouquet" required>
+            </div>
+            <button id="saveBtn" class="btn btn-primary btn-lg">
+                Save to Gallery
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Canvas -->
+    <div class="canvas-area">
+        <div class="canvas-header">
+            <h1>Flower Arranging Workshop</h1>
+            <p>Drag flowers from the library to create your arrangement</p>
+        </div>
+        
+        <div id="canvasContainer" class="canvas-container arrange-canvas">
+            <!-- Flowers will be added here dynamically -->
+        </div>
+        
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+</div>
+{% endblock %}

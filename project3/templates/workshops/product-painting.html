@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Product Painting Workshop{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/workshops.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/workshops/product-painting.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="workshop-container">
+    <!-- Left Sidebar - Tools -->
+    <aside class="tools-sidebar">
+        <h2>🎨 Painting Tools</h2>
+        
+        <!-- Product Selection -->
+        <div class="tool-section">
+            <h3>Select Product</h3>
+            <div class="product-grid">
+                <button class="product-btn active" data-product="mug">
+                    <span>☕</span>
+                    <p>Mug</p>
+                </button>
+                <button class="product-btn" data-product="cup">
+                    <span>🍷</span>
+                    <p>Cup</p>
+                </button>
+                <button class="product-btn" data-product="bag">
+                    <span>👜</span>
+                    <p>Tote Bag</p>
+                </button>
+                <button class="product-btn" data-product="mirror">
+                    <span>🪞</span>
+                    <p>Mirror</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="tool-section">
+            <h3>Colors</h3>
+            <div class="color-palette">
+                <button class="color-btn active" data-color="#FF6B6B" style="background: #FF6B6B;"></button>
+                <button class="color-btn" data-color="#4ECDC4" style="background: #4ECDC4;"></button>
+                <button class="color-btn" data-color="#FFD93D" style="background: #FFD93D;"></button>
+                <button class="color-btn" data-color="#6BCF7F" style="background: #6BCF7F;"></button>
+                <button class="color-btn" data-color="#A8E6CF" style="background: #A8E6CF;"></button>
+                <button class="color-btn" data-color="#FF8B94" style="background: #FF8B94;"></button>
+                <button class="color-btn" data-color="#B4A7D6" style="background: #B4A7D6;"></button>
+                <button class="color-btn" data-color="#FFA07A" style="background: #FFA07A;"></button>
+                <button class="color-btn" data-color="#98D8C8" style="background: #98D8C8;"></button>
+                <button class="color-btn" data-color="#F7DC6F" style="background: #F7DC6F;"></button>
+                <button class="color-btn" data-color="#85C1E2" style="background: #85C1E2;"></button>
+                <button class="color-btn" data-color="#000000" style="background: #000000;"></button>
+            </div>
+            <div class="custom-color">
+                <label>Custom Color</label>
+                <input type="color" id="customColor" value="#FF6B6B">
+            </div>
+        </div>
+
+        <!-- Brush Size -->
+        <div class="tool-section">
+            <h3>Brush Size</h3>
+            <input type="range" id="brushSize" min="2" max="50" value="10">
+            <span id="brushSizeValue">10px</span>
+        </div>
+
+        <!-- Tools -->
+        <div class="tool-section">
+            <h3>Tools</h3>
+            <button id="eraserBtn" class="btn btn-tool">✏️ Eraser</button>
+            <button id="clearBtn" class="btn btn-tool btn-danger">🗑️ Clear Canvas</button>
+        </div>
+
+        <!-- Save Section -->
+        <div class="tool-section save-section">
+            <h3>💾 Save Your Design</h3>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="paintingTitle" placeholder="My Painted Mug" required>
+            </div>
+            <button id="saveBtn" class="btn btn-primary btn-lg">
+                Save to Gallery
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Canvas Area -->
+    <div class="canvas-area">
+        <div class="canvas-header">
+            <h1>Product Painting Workshop</h1>
+            <p>Paint your design on the canvas below</p>
+        </div>
+        
+        <div id="canvasContainer" class="canvas-container"></div>
+        
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Artisan Network{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    {% block scripts %}{% endblock %}
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-logo">✨ Artisan Network</a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                {% if user %}
+                <li><a href="{{ url_for('product_painting_workshop') }}">Paint</a></li>
+                <li><a href="{{ url_for('flower_arranging_workshop') }}">Flowers</a></li>
+                <li><a href="{{ url_for('charm_bracelet_workshop') }}">Charms</a></li>
+                <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+                <li><a href="{{ url_for('logout') }}" class="btn btn-sm btn-primary">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+                <li><a href="{{ url_for('login') }}" class="btn btn-sm btn-secondary">Sign In</a></li>
+                <li><a href="{{ url_for('register') }}" class="btn btn-sm btn-primary">Join</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="main-footer">
+        <p><strong>Artisan Network</strong> - Collaborative Craft Workshop</p>
+        <p>&copy; 2024 | CART 351 Project III</p>
+    </footer>
+
+    {% block page_scripts %}{% endblock %}
+</body>
+</html>
