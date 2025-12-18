@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery - View All Paintings{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="gallery-container">
+    <header class="gallery-header">
+        <h1>🖼️ Community Gallery</h1>
+        <p class="gallery-subtitle">Explore the collective creativity of our artists</p>
+        
+        <!-- Gallery Stats -->
+        <div class="gallery-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalPaintings">0</div>
+                <div class="stat-label">Paintings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalArtists">0</div>
+                <div class="stat-label">Artists</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avgTime">0</div>
+                <div class="stat-label">Avg Time (min)</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading paintings...</p>
+    </div>
+
+    <!-- Paintings Grid -->
+    <div id="paintingsGrid" class="paintings-grid">
+        <!-- Paintings will be dynamically loaded here -->
+    </div>
+
+    <!-- No Paintings Message -->
+    <div id="noPaintings" class="no-paintings" style="display: none;">
+        <p>No paintings yet. Be the first to create one!</p>
+        <a href="{{ url_for('workshop') }}" class="btn btn-primary">
+            Create First Painting
+        </a>
+    </div>
+
+    <!-- Modal for Viewing Full Painting -->
+    <div id="paintingModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modalBody">
+                <!-- Painting details will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Workshop - Create Your Painting{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/workshop.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="workshop-container">
+    <!-- Left Panel: Tools & Settings -->
+    <aside class="tools-panel">
+        <h2>🛠️ Tools</h2>
+        
+        <!-- Canvas Size Selection -->
+        <div class="tool-section">
+            <h3>Canvas Size</h3>
+            <div class="canvas-size-options">
+                <button class="size-btn active" data-width="600" data-height="400">
+                    Small<br>(600×400)
+                </button>
+                <button class="size-btn" data-width="800" data-height="600">
+                    Medium<br>(800×600)
+                </button>
+                <button class="size-btn" data-width="1000" data-height="700">
+                    Large<br>(1000×700)
+                </button>
+            </div>
+            <button id="applyCanvasSize" class="btn btn-small">Apply Size</button>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="tool-section">
+            <h3>Colors</h3>
+            <div class="color-palette">
+                <button class="color-btn active" data-color="#000000" style="background: #000000;"></button>
+                <button class="color-btn" data-color="#FFFFFF" style="background: #FFFFFF; border: 1px solid #ccc;"></button>
+                <button class="color-btn" data-color="#FF0000" style="background: #FF0000;"></button>
+                <button class="color-btn" data-color="#00FF00" style="background: #00FF00;"></button>
+                <button class="color-btn" data-color="#0000FF" style="background: #0000FF;"></button>
+                <button class="color-btn" data-color="#FFFF00" style="background: #FFFF00;"></button>
+                <button class="color-btn" data-color="#FF00FF" style="background: #FF00FF;"></button>
+                <button class="color-btn" data-color="#00FFFF" style="background: #00FFFF;"></button>
+                <button class="color-btn" data-color="#FFA500" style="background: #FFA500;"></button>
+                <button class="color-btn" data-color="#800080" style="background: #800080;"></button>
+                <button class="color-btn" data-color="#FFC0CB" style="background: #FFC0CB;"></button>
+                <button class="color-btn" data-color="#A52A2A" style="background: #A52A2A;"></button>
+            </div>
+            <div class="custom-color">
+                <label for="colorPicker">Custom Color:</label>
+                <input type="color" id="colorPicker" value="#000000">
+            </div>
+        </div>
+
+        <!-- Brush Size -->
+        <div class="tool-section">
+            <h3>Brush Size</h3>
+            <input type="range" id="brushSize" min="1" max="50" value="5">
+            <span id="brushSizeDisplay">5px</span>
+        </div>
+
+        <!-- Tools -->
+        <div class="tool-section">
+            <h3>Tools</h3>
+            <button id="eraserBtn" class="btn btn-tool">
+                ✏️ Eraser
+            </button>
+            <button id="clearBtn" class="btn btn-tool btn-danger">
+                🗑️ Clear Canvas
+            </button>
+        </div>
+
+        <!-- Save Panel -->
+        <div class="tool-section save-section">
+            <h3>💾 Save Your Painting</h3>
+            <div class="form-group">
+                <label for="artistName">Your Name:</label>
+                <input type="text" id="artistName" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="paintingTitle">Painting Title:</label>
+                <input type="text" id="paintingTitle" placeholder="Untitled Masterpiece" required>
+            </div>
+            <button id="saveBtn" class="btn btn-primary btn-large">
+                Save Painting
+            </button>
+        </div>
+
+        <!-- Stats Display -->
+        <div class="tool-section stats-section">
+            <h3>📊 Your Session</h3>
+            <p>Time: <span id="timeDisplay">0:00</span></p>
+            <p>Strokes: <span id="strokeDisplay">0</span></p>
+            <p>Colors Used: <span id="colorDisplay">1</span></p>
+        </div>
+    </aside>
+
+    <!-- Center Panel: Canvas -->
+    <div class="canvas-panel">
+        <div id="canvasContainer"></div>
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+</div>
+{% endblock %}

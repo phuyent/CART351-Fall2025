@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Painting Workshop{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <section class="hero-section">
+        <h1 class="hero-title">Welcome to the Collaborative Painting Workshop</h1>
+        <p class="hero-subtitle">Create. Share. Inspire.</p>
+        
+        <div class="hero-description">
+            <p>Join a global community of digital artists. Express yourself on canvas, 
+               save your masterpieces, and explore the collective creativity of others.</p>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="{{ url_for('workshop') }}" class="btn btn-primary">
+                🎨 Start Painting
+            </a>
+            <a href="{{ url_for('gallery') }}" class="btn btn-secondary">
+                🖼️ View Gallery
+            </a>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🖌️</div>
+                <h3>Custom Canvas</h3>
+                <p>Choose your canvas size and create exactly what you envision</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Rich Color Palette</h3>
+                <p>Select from a vibrant color palette or create your own colors</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <h3>Variable Brushes</h3>
+                <p>Adjust brush sizes from fine detail to bold strokes</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Permanent Storage</h3>
+                <p>Save your artwork permanently to our server</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Shared Gallery</h3>
+                <p>View and be inspired by the collective creativity</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Community Stats</h3>
+                <p>See trends in colors, styles, and artistic expression</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <h2>About This Project</h2>
+        <p>This collaborative painting workshop explores the intersection of individual creativity 
+           and collective expression. Each painting is a unique voice, yet together they form a 
+           tapestry of shared human experience. Through simple tools and unlimited imagination, 
+           we create a living, breathing digital art gallery.</p>
+    </section>
+</div>
+{% endblock %}
